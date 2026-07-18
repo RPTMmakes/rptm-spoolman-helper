@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-alpha.2
+
+- Fixed Home Assistant Ingress prefix handling
+- Made frontend asset and API URLs Ingress-safe
+- Retained direct access through TCP port 8765
+
 ## 1.0.0-alpha.1
 
 - Initial Home Assistant app/add-on scaffold

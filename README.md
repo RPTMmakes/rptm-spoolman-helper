@@ -4,9 +4,9 @@ RPTM Spoolman Helper is being rebuilt as a native Home Assistant app/add-on.
 
 ## Current development status
 
-Version: `1.0.0-alpha.1`
+Version: `1.0.0-alpha.2`
 
-This first alpha contains the technical foundation:
+The current alpha contains the technical foundation:
 
 - Home Assistant repository metadata
 - Ingress and sidebar support
@@ -14,5 +14,6 @@ This first alpha contains the technical foundation:
 - FastAPI backend
 - Separate HTML, CSS and JavaScript files
 - Health and version endpoints
+- Ingress-safe frontend paths
 
 The existing Python prototype remains a functional and visual reference.

@@ -1,7 +1,10 @@
 "use strict";
 
-function relativeUrl(path) {
-  return new URL(path, new URL(".", window.location.href));
+function apiUrl(path) {
+  const meta = document.querySelector('meta[name="rptm-api-base"]');
+  const base = (meta?.content || "/api").replace(/\/$/, "");
+  const cleanPath = path.replace(/^\//, "");
+  return `${base}/${cleanPath}`;
 }
 
 async function loadRuntimeStatus() {
@@ -11,8 +14,8 @@ async function loadRuntimeStatus() {
 
   try {
     const [healthResponse, settingsResponse] = await Promise.all([
-      fetch(relativeUrl("api/health"), { cache: "no-store" }),
-      fetch(relativeUrl("api/settings"), { cache: "no-store" }),
+      fetch(apiUrl("health"), { cache: "no-store" }),
+      fetch(apiUrl("settings"), { cache: "no-store" }),
     ]);
 
     if (!healthResponse.ok || !settingsResponse.ok) {

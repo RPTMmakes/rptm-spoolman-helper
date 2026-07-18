@@ -12,6 +12,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.api.routes import router
 from app.core.config import settings
+from app.core.ingress import HomeAssistantIngressMiddleware
 from app.core.logging import configure_logging
 from app.services.status_service import health_payload, version_payload
 
@@ -26,6 +27,11 @@ app = FastAPI(
     docs_url="/api/docs",
     redoc_url=None,
     openapi_url="/api/openapi.json",
+)
+
+app.add_middleware(
+    HomeAssistantIngressMiddleware,
+    slug=settings.slug,
 )
 
 app.mount(
@@ -52,12 +58,18 @@ async def on_startup() -> None:
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def index(request: Request) -> HTMLResponse:
     """Render the first dashboard shell."""
+    ingress_path = str(
+        getattr(request.state, "ingress_path", "")
+    ).rstrip("/")
+
     return templates.TemplateResponse(
         request=request,
         name="index.html",
         context={
             "app_name": settings.app_name,
             "version": settings.version,
+            "api_base": f"{ingress_path}/api",
+            "static_base": f"{ingress_path}/static",
         },
     )
 

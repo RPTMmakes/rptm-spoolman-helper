@@ -23,14 +23,18 @@ async def version() -> dict[str, str]:
 
 
 @router.get("/settings", tags=["system"])
-async def public_settings(request: Request) -> dict[str, str | int | bool | None]:
+async def public_settings(
+    request: Request,
+) -> dict[str, str | int | bool | None]:
     """Expose only non-sensitive runtime settings to the frontend."""
-    ingress_path = request.headers.get("x-ingress-path")
+    ingress_path = str(
+        getattr(request.state, "ingress_path", "")
+    ).rstrip("/")
 
     return {
         "app_name": settings.app_name,
         "version": settings.version,
         "port": settings.port,
-        "ingress": ingress_path is not None,
-        "ingress_path": ingress_path,
+        "ingress": bool(ingress_path),
+        "ingress_path": ingress_path or None,
     }
