@@ -1,5 +1,5 @@
 name: RPTM Spoolman Helper
-version: 1.0.0-alpha.3
+version: 1.0.0-alpha.4
 slug: rptm_spoolman_helper
 description: >-
   Komfortable Spoolman-Verwaltung, QR-Code-Workflows,
@@ -34,6 +34,10 @@ map:
 
 options:
   log_level: info
+  spoolman_url: http://192.168.178.73:7912
+  spoolman_timeout: 5
 
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)
+  spoolman_url: url
+  spoolman_timeout: int(1,30)

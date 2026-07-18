@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-alpha.4
+
+- Connected the helper to the Spoolman REST API
+- Added configurable Spoolman URL and timeout
+- Added inventory counters and location retrieval
+- Added the first manual Spoolman sync action
+
 ## 1.0.0-alpha.3
 
 - Normalized Home Assistant Ingress root requests from `//` to `/`

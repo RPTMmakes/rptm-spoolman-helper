@@ -28,10 +28,10 @@
         <section class="hero">
           <div>
             <p class="eyebrow">Home Assistant Add-on</p>
-            <h2>Das neue Fundament steht.</h2>
+            <h2>Spoolman ist jetzt angebunden.</h2>
             <p class="hero-copy">
-              Ingress, Port 8765, FastAPI und die modulare Projektstruktur
-              sind für die eigentliche Migration vorbereitet.
+              Der Helper prüft die Spoolman-API, liest Bestand und
+              Lagerorte ein und stellt die Daten über eine eigene API bereit.
             </p>
           </div>
 
@@ -43,9 +43,54 @@
 
         <section class="bento-grid" aria-label="Systemstatus">
           <article class="card card-wide">
-            <p class="card-label">System</p>
+            <div class="card-heading">
+              <div>
+                <p class="card-label">Spoolman</p>
+                <h3>Verbindung und Bestand</h3>
+              </div>
+              <button class="button" id="spoolman-sync" type="button">
+                Spoolman abgleichen
+              </button>
+            </div>
+
+            <p class="connection-message" id="spoolman-message">
+              Verbindung wird hergestellt …
+            </p>
+
+            <dl class="facts facts-spoolman">
+              <div>
+                <dt>Status</dt>
+                <dd id="spoolman-status">Prüfe …</dd>
+              </div>
+              <div>
+                <dt>Version</dt>
+                <dd id="spoolman-version">–</dd>
+              </div>
+              <div>
+                <dt>Spulen</dt>
+                <dd id="spool-count">–</dd>
+              </div>
+              <div>
+                <dt>Filamente</dt>
+                <dd id="filament-count">–</dd>
+              </div>
+              <div>
+                <dt>Hersteller</dt>
+                <dd id="vendor-count">–</dd>
+              </div>
+              <div>
+                <dt>Lagerorte</dt>
+                <dd id="location-count">–</dd>
+              </div>
+            </dl>
+
+            <div class="location-list" id="location-list"></div>
+          </article>
+
+          <article class="card">
+            <p class="card-label">Helper</p>
             <h3>Add-on-Status</h3>
-            <dl class="facts">
+            <dl class="compact-facts">
               <div>
                 <dt>Backend</dt>
                 <dd id="backend-status">Prüfe …</dd>
@@ -63,28 +108,11 @@
 
           <article class="card">
             <p class="card-label">Nächster Schritt</p>
-            <h3>Spoolman anbinden</h3>
+            <h3>Bestands-Dashboard</h3>
             <p>
-              Im nächsten Sprint folgen Verbindungstest,
-              Lagerorte und die ersten echten Daten.
-            </p>
-          </article>
-
-          <article class="card">
-            <p class="card-label">Architektur</p>
-            <h3>Sauber getrennt</h3>
-            <p>
-              Backend, API, Services, Templates und statische Dateien
-              liegen jetzt in getrennten Modulen.
-            </p>
-          </article>
-
-          <article class="card card-wide muted">
-            <p class="card-label">Noch nicht enthalten</p>
-            <h3>Bewusst nur das Grundgerüst</h3>
-            <p>
-              Dashboard-Daten, AMS, QR-Codes, Spulenanlage und Statistiken
-              werden ab dem nächsten Sprint schrittweise übernommen.
+              Als Nächstes werden echte Spulenkarten, Füllstände,
+              Filter und die Lagerort-Auswahl aus den eingelesenen
+              Spoolman-Daten aufgebaut.
             </p>
           </article>
         </section>

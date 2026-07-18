@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-alpha.4
+
+- Added configurable Spoolman URL and timeout
+- Added Spoolman health, version and inventory checks
+- Added API endpoints for status, locations and manual sync
+- Added first live Spoolman dashboard card
+
 ## 1.0.0-alpha.3
 
 - Normalized Home Assistant Ingress root requests from `//` to `/`
