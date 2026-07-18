@@ -40,7 +40,7 @@ button {
 }
 
 .app-shell {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1320px, calc(100% - 32px));
   margin: 0 auto;
   padding: 28px 0 64px;
 }
@@ -64,7 +64,7 @@ button {
 
 .topbar {
   gap: 24px;
-  margin-bottom: 54px;
+  margin-bottom: 22px;
 }
 
 .brand {
@@ -135,6 +135,50 @@ h3 {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+
+.main-navigation {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 52px;
+  padding: 7px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(19, 26, 34, 0.78);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+  scrollbar-width: thin;
+  backdrop-filter: blur(18px);
+}
+
+.nav-item {
+  flex: 0 0 auto;
+  padding: 11px 15px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 750;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+
+.nav-item:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.045);
+  transform: translateY(-1px);
+}
+
+.nav-item.is-active {
+  border-color: rgba(255, 95, 66, 0.38);
+  background: rgba(255, 95, 66, 0.14);
+  color: var(--text);
 }
 
 .hero {
@@ -305,13 +349,30 @@ dd {
   opacity: 0.7;
 }
 
+
+@media (max-width: 900px) {
+  .main-navigation {
+    margin-right: -16px;
+    margin-left: -16px;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 760px) {
   .app-shell {
-    width: min(100% - 20px, 1180px);
+    width: min(100% - 20px, 1320px);
     padding-top: 18px;
   }
 
   .topbar {
+    margin-bottom: 18px;
+  }
+
+  .main-navigation {
     margin-bottom: 38px;
   }
 
