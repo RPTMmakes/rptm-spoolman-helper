@@ -1,0 +1,6 @@
+configuration:
+  log_level:
+    name: Protokollstufe
+    description: Legt fest, wie ausführlich das Add-on protokolliert.
+network:
+  8765/tcp: Direkter Zugriff und spätere QR-Code-Ziele

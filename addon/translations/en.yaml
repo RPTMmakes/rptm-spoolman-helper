@@ -1,0 +1,6 @@
+configuration:
+  log_level:
+    name: Log level
+    description: Controls how much information the app writes to its log.
+network:
+  8765/tcp: Direct access and future QR-code targets

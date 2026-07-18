@@ -1,0 +1,39 @@
+name: RPTM Spoolman Helper
+version: 1.0.0-alpha.1
+slug: rptm_spoolman_helper
+description: >-
+  Komfortable Spoolman-Verwaltung, QR-Code-Workflows,
+  AMS-Übersicht und Statistiken für Home Assistant.
+url: https://github.com/RPTMmakes/rptm-spoolman-helper
+stage: experimental
+startup: application
+boot: auto
+init: false
+arch:
+  - amd64
+  - aarch64
+
+ingress: true
+ingress_port: 8765
+ingress_entry: /
+panel_icon: mdi:printer-3d
+panel_title: RPTM Spoolman Helper
+panel_admin: false
+
+webui: http://[HOST]:[PORT:8765]
+watchdog: http://[HOST]:[PORT:8765]/health
+
+ports:
+  8765/tcp: 8765
+ports_description:
+  8765/tcp: Direkter Zugriff und spätere QR-Code-Ziele
+
+map:
+  - type: addon_config
+    read_only: false
+
+options:
+  log_level: info
+
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)

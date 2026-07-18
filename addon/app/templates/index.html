@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>{{ app_name }}</title>
+    <link rel="stylesheet" href="static/css/app.css">
+    <script src="static/js/app.js" defer></script>
+  </head>
+
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">R</div>
+          <div>
+            <p class="eyebrow">RPTM.Makes</p>
+            <h1>Spoolman Helper</h1>
+          </div>
+        </div>
+
+        <div class="version-badge">v{{ version }}</div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Home Assistant Add-on</p>
+            <h2>Das neue Fundament steht.</h2>
+            <p class="hero-copy">
+              Ingress, Port 8765, FastAPI und die modulare Projektstruktur
+              sind für die eigentliche Migration vorbereitet.
+            </p>
+          </div>
+
+          <div class="status-pill" id="global-status">
+            <span class="status-dot"></span>
+            <span>Verbindung wird geprüft …</span>
+          </div>
+        </section>
+
+        <section class="bento-grid" aria-label="Systemstatus">
+          <article class="card card-wide">
+            <p class="card-label">System</p>
+            <h3>Add-on-Status</h3>
+            <dl class="facts">
+              <div>
+                <dt>Backend</dt>
+                <dd id="backend-status">Prüfe …</dd>
+              </div>
+              <div>
+                <dt>Zugriff</dt>
+                <dd id="access-mode">Prüfe …</dd>
+              </div>
+              <div>
+                <dt>Port</dt>
+                <dd>8765</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="card">
+            <p class="card-label">Nächster Schritt</p>
+            <h3>Spoolman anbinden</h3>
+            <p>
+              Im nächsten Sprint folgen Verbindungstest,
+              Lagerorte und die ersten echten Daten.
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="card-label">Architektur</p>
+            <h3>Sauber getrennt</h3>
+            <p>
+              Backend, API, Services, Templates und statische Dateien
+              liegen jetzt in getrennten Modulen.
+            </p>
+          </article>
+
+          <article class="card card-wide muted">
+            <p class="card-label">Noch nicht enthalten</p>
+            <h3>Bewusst nur das Grundgerüst</h3>
+            <p>
+              Dashboard-Daten, AMS, QR-Codes, Spulenanlage und Statistiken
+              werden ab dem nächsten Sprint schrittweise übernommen.
+            </p>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
