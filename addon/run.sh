@@ -5,7 +5,7 @@ LOG_LEVEL="$(bashio::config 'log_level')"
 
 export RPTM_LOG_LEVEL="${LOG_LEVEL}"
 
-bashio::log.info "Starte RPTM Spoolman Helper v1.0.0-alpha.2"
+bashio::log.info "Starte RPTM Spoolman Helper v1.0.0-alpha.3"
 bashio::log.info "Webserver lauscht auf Port 8765"
 
 exec /opt/rptm-venv/bin/uvicorn app.main:app \

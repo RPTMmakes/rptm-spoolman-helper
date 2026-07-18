@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-alpha.3
+
+- Normalized Home Assistant Ingress root requests from `//` to `/`
+- Added regression tests for repeated leading slashes
+
 ## 1.0.0-alpha.2
 
 - Home Assistant Ingress path handling fixed

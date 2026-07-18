@@ -11,7 +11,7 @@ ASGIApp = Callable[[dict[str, Any], ASGIReceive, ASGISend], Awaitable[None]]
 
 
 class HomeAssistantIngressMiddleware:
-    """Handle Home Assistant Ingress with or without a forwarded prefix."""
+    """Normalize and strip Home Assistant Ingress path prefixes."""
 
     def __init__(self, app: ASGIApp, slug: str) -> None:
         self.app = app
@@ -28,7 +28,13 @@ class HomeAssistantIngressMiddleware:
             return
 
         updated_scope = dict(scope)
-        path = str(updated_scope.get("path", "/"))
+        original_path = str(updated_scope.get("path", "/"))
+
+        # Home Assistant may forward the root entry as "//".
+        # FastAPI treats "//" as a different route from "/", so collapse
+        # all repeated leading slashes before route matching.
+        path = f"/{original_path.lstrip('/')}"
+
         headers = {
             key.decode("latin-1").lower(): value.decode("latin-1")
             for key, value in updated_scope.get("headers", [])
@@ -49,10 +55,10 @@ class HomeAssistantIngressMiddleware:
                 prefix_to_strip = public_prefix
 
         if prefix_to_strip:
-            path = path[len(prefix_to_strip) :] or "/"
-            if not path.startswith("/"):
-                path = f"/{path}"
+            path = path[len(prefix_to_strip):] or "/"
+            path = f"/{path.lstrip('/')}"
 
+        if path != original_path:
             updated_scope["path"] = path
             updated_scope["raw_path"] = path.encode("utf-8")
 

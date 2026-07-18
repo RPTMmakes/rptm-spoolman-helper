@@ -6,7 +6,7 @@ def test_health_payload_is_ok() -> None:
 
     assert payload["status"] == "ok"
     assert payload["service"] == "RPTM Spoolman Helper"
-    assert payload["version"] == "1.0.0-alpha.2"
+    assert payload["version"] == "1.0.0-alpha.3"
 
 
 def test_version_payload_contains_version() -> None:
@@ -14,5 +14,5 @@ def test_version_payload_contains_version() -> None:
 
     assert payload == {
         "name": "RPTM Spoolman Helper",
-        "version": "1.0.0-alpha.2",
+        "version": "1.0.0-alpha.3",
     }
